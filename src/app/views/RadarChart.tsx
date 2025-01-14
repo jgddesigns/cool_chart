@@ -11,18 +11,35 @@ export default function RadarChart (props: any) {
     const [DisplayedRadar, setDisplayedRadar] = React.useState<any>({})
     const [DisplayedStyle, setDisplayedStyle] = React.useState<any>("")
     const [TextValues, setTextValues] = React.useState<any>(["", "", "", "", "", "", "", ""])
-    const [PointValue, setPointValue] = React.useState<any>(3)
-
+    const [PointValue, setPointValue] = React.useState<any>(null)
     const [BackgroundColor, setBackgroundColor] = React.useState<any>("")
 
     const sizes = ["100px", "200px", "300px", "500px"]
 
-    const [Values, setValues] = React.useState({"house": [3,4], "car": .1, "plane": .3})
+      
+    const ending_points = [
+        [0, 0],  
+        [25, 0], 
+        [50, 0],  //
+        [75, 0], 
+        [100, 0], 
+        [87.5, 12.5], 
+        [100, 25], 
+        [100, 50], //
+        [100, 62.5], 
+        [100, 75], 
+        [100, 100], 
+        [75, 100], 
+        [50, 100], //
+        [25, 100], 
+        [0, 62.5], 
+        [0, 100], 
+        [0, 75], 
+        [0, 50], //
+        [0, 25], 
+        [12.5, 12.5]
+    ]
 
-
-                           //0     //1      //2       //3     //4       //5          //6         //7        //8          //9        
-    const ending_points = [[0, 0], [25, 0], [50, 0], [75, 0], [100, 0], [87.5, 12.5], [100, 25], [100, 50], [100, 62.5], [100, 75], [100, 100], [75, 100], [50, 100], [25, 100], [0, 62.5], [0, 100], [0, 75], [0, 50], [0, 25], [12.5, 12.5]]
-    //10        //11       //12       //13       //14       //15      //16     //17     //18     //19
 
     const points_array: any = {
         "3": [2, 10, 15],
@@ -42,16 +59,17 @@ export default function RadarChart (props: any) {
 
     useEffect(() => {
         is_color() ? setBackgroundColor(props.Color) : setBackgroundColor("#c2c2c2")
+        props.Data ? setPointValue(Object.keys(props.Data).length) : null
     }, [])
 
 
     useEffect(() => {
-        BackgroundColor.length > 0 ? calculate_points(PointValue) : null
-    }, [BackgroundColor])
+        PointValue ? calculate_points(PointValue) : null
+    }, [PointValue])
 
 
     useEffect(() => {
-        PointsOriginal ? adjust_points([], Values) : null
+        PointsOriginal ? adjust_points(props.Data) : null
     }, [PointsOriginal])
 
 
@@ -95,10 +113,12 @@ export default function RadarChart (props: any) {
 
     function build_values(values: any){
         let temp_arr: any = []
+        // temp_arr.push([50, 50])
         for(let i=0; i<values.length; i++){
             temp_arr.push(ending_points[values[i]])
         }
-
+        console.log("temp arr")
+        console.log(temp_arr)
         setPointsOriginal(temp_arr)
         return temp_arr
     }
@@ -167,35 +187,77 @@ export default function RadarChart (props: any) {
     }
 
 
-    function adjust_points(points_arr: any, values: any){
+    function adjust_points(values: any){
         let temp_arr: any = PointsOriginal
+        console.log(temp_arr)
         for(let i = 0; i < temp_arr.length; i++){
-            temp_arr[i][0] != 0 ? temp_arr[i][0] = temp_arr[i][0] * get_percent(values[Object.keys(values)[i]]) : temp_arr[i][0] = temp_arr[i][0] + (50 - (50 * get_percent(values[Object.keys(values)[i]])))
-            temp_arr[i][1] != 0 ? temp_arr[i][1] = temp_arr[i][1] * get_percent(values[Object.keys(values)[i]]) : temp_arr[i][1] = temp_arr[i][1] + (50 - (50 * get_percent(values[Object.keys(values)[i]])))
+            console.log(temp_arr[i])
+            // if(!temp_arr[i].includes(50)){
+                temp_arr[i][0] > 1 && temp_arr[i][0] < 50 ? temp_arr[i][0] = temp_arr[i][0] * Math.abs(1+(1-get_percent(values[Object.keys(values)[i]]))) : null
+
+                temp_arr[i][0] > 50 && temp_arr[i][0] < 100 ? temp_arr[i][0] = 50 + (Math.abs(temp_arr[i][0] - 50) * get_percent(values[Object.keys(values)[i]])) : null
+
+                temp_arr[i][0] == 100 ? temp_arr[i][0] = 50 + 50 * get_percent(values[Object.keys(values)[i]]) : null
+
+                temp_arr[i][0] == 0 ? temp_arr[i][0] = 0 + 50 * (1-get_percent(values[Object.keys(values)[i]])) : null
+
+
+                temp_arr[i][1] > 1 && temp_arr[i][1] < 50 ? temp_arr[i][1] = temp_arr[i][1] * Math.abs(1+(1-get_percent(values[Object.keys(values)[i]]))) : null
+                
+                temp_arr[i][1] == 100 ? temp_arr[i][1] = 50 + 50 * get_percent(values[Object.keys(values)[i]]) : null
+
+                temp_arr[i][1] == 0 ? console.log(temp_arr[i]) : null
+
+                console.log(ending_points[points_array[PointValue][i]])
+
+                temp_arr[i][1] == 0 ? temp_arr[i][1] = 50 - (50 * get_percent(values[Object.keys(values)[i]])) : null
+
+                
+                console.log(temp_arr[i])
+            //}
+            // else{
+            //     if(temp_arr[i][0] == 50){
+            //         temp_arr[i][1] == 0 ? temp_arr[i][1]  = temp_arr[i][1] + (100 *(1-get_percent(values[Object.keys(values)[i]]))) : temp_arr[i][1] = temp_arr[i][1] * get_percent(values[Object.keys(values)[i]]) 
+            //     }else{
+            //         temp_arr[i][0] == 0 ? temp_arr[i][0] = temp_arr[i][0] + (100 *(1-get_percent(values[Object.keys(values)[i]]))) : temp_arr[i][0] = temp_arr[i][0] * get_percent(values[Object.keys(values)[i]]) 
+            //     }
+            // }
+
+
+            // temp_arr[i][1] = temp_arr[i][1] + (100 *(1-get_percent(values[Object.keys(values)[i]]))) 
         }
+        // temp_arr.unshift([50,50])
+        // temp_arr = [[50, 40], [60,60], [15,70]]
+        console.log(temp_arr)
 
         setPointsAdjusted(temp_arr)
     }
 
 
     function get_percent(values: any){
+        console.log("values")
+        console.log(values)
         if(!isNaN(values[0])){
             console.log("getting value percentage")
+            console.log(values[0]/values[1])
             return values[0]/values[1]
         }
         console.log("value percentage already calculated")
+        console.log(values)
         return values
-    }
-
-
-    function get_values(values_arr: any){
-        
     }
 
 
     return(
         <div>
+
             <div className="w-full h-full grid grid-auto-rows grid-auto-cols place-items-center">
+                <div className="mb-12 text-3xl">
+                    {props.Title}
+                </div>
+                <div className="mb-48 text-2xl italic">
+                    {Object.keys(props.Data).length} Points of Data
+                </div>
                 <div className="grid grid-flow-col gap-48">
                     <span>
                         {TextValues[0]}                     
