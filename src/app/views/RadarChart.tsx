@@ -11,6 +11,7 @@ export default function RadarChart (props: any) {
     const [DisplayedRadar, setDisplayedRadar] = React.useState<any>({})
     const [DisplayedStyle, setDisplayedStyle] = React.useState<any>("")
     const [TextValues, setTextValues] = React.useState<any>(["", "", "", "", "", "", "", ""])
+    const [PercentValues, setPercentValues] = React.useState<any>(["", "", "", "", "", "", "", ""])
     const [PointValue, setPointValue] = React.useState<any>(null)
     const [BackgroundColor, setBackgroundColor] = React.useState<any>("")
 
@@ -20,22 +21,22 @@ export default function RadarChart (props: any) {
     const ending_points = [
         [0, 0],  
         [25, 0], 
-        [50, 0],  //
+        [50, 0],  
         [75, 0], 
         [100, 0], 
         [87.5, 12.5], 
         [100, 25], 
-        [100, 50], //
+        [100, 50], 
         [100, 62.5], 
         [100, 75], 
         [100, 100], 
         [75, 100], 
-        [50, 100], //
+        [50, 100], 
         [25, 100], 
         [0, 62.5], 
         [0, 100], 
         [0, 75], 
-        [0, 50], //
+        [0, 50], 
         [0, 25], 
         [12.5, 12.5]
     ]
@@ -158,30 +159,44 @@ export default function RadarChart (props: any) {
     }
 
 
-    function get_text(){
-        return ["Text 1", "Text 2", "Text 3", "Text 8", "Text", "Text 7", "Text", "Text 4", "Text 3", "Text 5", "Text 6", "Text"]
+    function get_text(place: any){
+        return Object.keys(props.Data)[place-1]
     }
 
+
+    function get_value(place: any){
+
+        let value = Math.round(get_percent(props.Data[Object.keys(props.Data)[place-1]]) * 100) + "%"
+        console.log(value)
+
+        return value
+    }
 
     function set_text(){
         switch (PointValue){
             case 3:
-                setTextValues(["", get_text()[1], "", "", "", get_text()[5], "", get_text()[7], "", "", "", ""])
+                setTextValues(["", get_text(1), "", "", "", "", get_text(2), "", get_text(3), "", "", ""])
+                setPercentValues(["", get_value(1), "", "", "", "", get_value(2), "", get_value(3), "", "", ""])
                 break
             case 4:
-                setTextValues([get_text()[0], "", get_text()[2], "", "", get_text()[5], "", get_text()[7], "", "", "", ""])
+                setTextValues([get_text(1), "", get_text(2), "", "", "", get_text(3), "", get_text(4), "", "", ""])
+                setPercentValues([get_value(1), "", get_value(2), "", "", "", get_value(3), "", get_value(4), "", "", ""])
                 break
             case 5:
-                setTextValues(["", get_text()[1], "", get_text()[3], get_text()[4], get_text()[5],  "", get_text()[7], "", "", "", ""])
+                setTextValues(["", get_text(1), "", "", get_text(2), "", get_text(3), "", get_text(4), "", get_text(5), ""])
+                setPercentValues(["", get_value(1), "", "", get_value(2), "", get_value(3), "", get_value(4), "", get_value(5), ""])
                 break
             case 6:
-                setTextValues([get_text()[0], "", get_text()[2], get_text()[3], get_text()[4], get_text()[5], "", get_text()[7], "", "", "", ""])
+                setTextValues([get_text(1), "", get_text(2), "", get_text(3), "", get_text(4), "", get_text(5), "", get_text(6), ""])
+                setPercentValues([get_value(1), "", get_value(2), "", get_value(3), "", get_value(4), "", get_value(5), "", get_value(6), ""])
                 break
             case 7:
-                setTextValues([get_text()[0], get_text()[1], get_text()[2], get_text()[3], get_text()[4], get_text()[5],  "", get_text()[7], "", "", "", ""])
+                setTextValues([get_text(1), get_text(2), get_text(3), "", get_text(4), "",  get_text(5), "", get_text(6), "", get_text(7 ), ""])
+                setPercentValues([get_value(1), get_value(2), get_value(3), "", get_value(4), "",  get_value(5), "", get_value(6), "", get_value(7 ), ""])
                 break
             case 8:
-                setTextValues([get_text()[0], "", get_text()[2], "", "", get_text()[5], "", get_text()[7], get_text()[8], get_text()[9], get_text()[10], get_text()[11]])
+                setTextValues([get_text(1), "", get_text(2), get_text(3), "", get_text(4), get_text(5), "", get_text(6), get_text(7), "", get_text(8)])
+                setPercentValues([get_value(1), "", get_value(2), get_value(3), "", get_value(4), get_value(5), "", get_value(6), get_value(7), "", get_value(8)])
                 break
         }
     }
@@ -191,44 +206,21 @@ export default function RadarChart (props: any) {
         let temp_arr: any = PointsOriginal
         console.log(temp_arr)
         for(let i = 0; i < temp_arr.length; i++){
-            console.log(temp_arr[i])
-            // if(!temp_arr[i].includes(50)){
-                temp_arr[i][0] > 1 && temp_arr[i][0] < 50 ? temp_arr[i][0] = temp_arr[i][0] * Math.abs(1+(1-get_percent(values[Object.keys(values)[i]]))) : null
+            temp_arr[i][0] > 1 && temp_arr[i][0] < 50 ? temp_arr[i][0] = temp_arr[i][0] * Math.abs(1+(1-get_percent(values[Object.keys(values)[i]]))) : null
 
-                temp_arr[i][0] > 50 && temp_arr[i][0] < 100 ? temp_arr[i][0] = 50 + (Math.abs(temp_arr[i][0] - 50) * get_percent(values[Object.keys(values)[i]])) : null
+            temp_arr[i][0] > 50 && temp_arr[i][0] < 100 ? temp_arr[i][0] = 50 + (Math.abs(temp_arr[i][0] - 50) * get_percent(values[Object.keys(values)[i]])) : null
 
-                temp_arr[i][0] == 100 ? temp_arr[i][0] = 50 + 50 * get_percent(values[Object.keys(values)[i]]) : null
+            temp_arr[i][0] == 100 ? temp_arr[i][0] = 50 + 50 * get_percent(values[Object.keys(values)[i]]) : null
 
-                temp_arr[i][0] == 0 ? temp_arr[i][0] = 0 + 50 * (1-get_percent(values[Object.keys(values)[i]])) : null
+            temp_arr[i][0] == 0 ? temp_arr[i][0] = 0 + 50 * (1-get_percent(values[Object.keys(values)[i]])) : null
 
 
-                temp_arr[i][1] > 1 && temp_arr[i][1] < 50 ? temp_arr[i][1] = temp_arr[i][1] * Math.abs(1+(1-get_percent(values[Object.keys(values)[i]]))) : null
-                
-                temp_arr[i][1] == 100 ? temp_arr[i][1] = 50 + 50 * get_percent(values[Object.keys(values)[i]]) : null
+            temp_arr[i][1] > 1 && temp_arr[i][1] < 50 ? temp_arr[i][1] = temp_arr[i][1] * Math.abs(1+(1-get_percent(values[Object.keys(values)[i]]))) : null
+            
+            temp_arr[i][1] == 100 ? temp_arr[i][1] = 50 + 50 * get_percent(values[Object.keys(values)[i]]) : null
 
-                temp_arr[i][1] == 0 ? console.log(temp_arr[i]) : null
-
-                console.log(ending_points[points_array[PointValue][i]])
-
-                temp_arr[i][1] == 0 ? temp_arr[i][1] = 50 - (50 * get_percent(values[Object.keys(values)[i]])) : null
-
-                
-                console.log(temp_arr[i])
-            //}
-            // else{
-            //     if(temp_arr[i][0] == 50){
-            //         temp_arr[i][1] == 0 ? temp_arr[i][1]  = temp_arr[i][1] + (100 *(1-get_percent(values[Object.keys(values)[i]]))) : temp_arr[i][1] = temp_arr[i][1] * get_percent(values[Object.keys(values)[i]]) 
-            //     }else{
-            //         temp_arr[i][0] == 0 ? temp_arr[i][0] = temp_arr[i][0] + (100 *(1-get_percent(values[Object.keys(values)[i]]))) : temp_arr[i][0] = temp_arr[i][0] * get_percent(values[Object.keys(values)[i]]) 
-            //     }
-            // }
-
-
-            // temp_arr[i][1] = temp_arr[i][1] + (100 *(1-get_percent(values[Object.keys(values)[i]]))) 
+            temp_arr[i][1] == 0 ? temp_arr[i][1] = 50 - (50 * get_percent(values[Object.keys(values)[i]])) : null
         }
-        // temp_arr.unshift([50,50])
-        // temp_arr = [[50, 40], [60,60], [15,70]]
-        console.log(temp_arr)
 
         setPointsAdjusted(temp_arr)
     }
@@ -250,68 +242,127 @@ export default function RadarChart (props: any) {
 
     return(
         <div>
-
-            <div className="w-full h-full grid grid-auto-rows grid-auto-cols place-items-center">
+            <div className="w-full h-full grid grid-auto-rows grid-auto-cols place-items-center text-lg">
                 <div className="mb-12 text-3xl">
-                    {props.Title}
+                    {props.Title ? props.Title : "Radar Chart"}
                 </div>
-                <div className="mb-48 text-2xl italic">
+                <div className="mb-36 text-2xl italic">
                     {Object.keys(props.Data).length} Points of Data
                 </div>
                 <div className="grid grid-flow-col gap-48">
-                    <span>
-                        {TextValues[0]}                     
-                    </span>
-                    <span>
-                        {TextValues[1]} 
-                    </span>
-                    <span>
-                        {TextValues[2]} 
-                    </span>
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[0]}                     
+                        </span>
+                        <span>
+                            {PercentValues[0]}
+                        </span>
+                    </div>
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[1]}                     
+                        </span>
+                        <span>
+                            {PercentValues[1]}
+                        </span>
+                    </div>
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[2]}                     
+                        </span>
+                        <span>
+                            {PercentValues[2]}
+                        </span>
+                    </div>       
                 </div>
                 <div className="grid grid-flow-col place-items-center gap-96">
-                    <span>
-                        {TextValues[8]}                     
-                    </span>
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[11]}                     
+                        </span>
+                        <span>
+                            {PercentValues[11]}
+                        </span>
+                    </div>
                     <div className="w-48">
                         
                     </div>              
-                    <span>
-                        {TextValues[9]} 
-                    </span>
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[3]}                     
+                        </span>
+                        <span>
+                            {PercentValues[3]}
+                        </span>
+                    </div>
                 </div>
-                <div className="grid grid-flow-col place-items-center gap-96">
-                    <div>
-                        {TextValues[3]} 
+                <div className="grid grid-flow-col place-items-center gap-96 mt-24 mb-24">
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[10]}                     
+                        </span>
+                        <span>
+                            {PercentValues[10]}
+                        </span>
                     </div>
                     {DisplayedStyle ? 
                         <div style={{clipPath: DisplayedRadar, backgroundColor: BackgroundColor, width: get_dimensions(), height: get_dimensions()}}/> 
                     : null}
-                    <div>
-                        {TextValues[4]} 
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[4]}                     
+                        </span>
+                        <span>
+                            {PercentValues[4]}
+                        </span>
                     </div>
                 </div>
                 <div className="grid grid-flow-col place-items-center gap-96">
-                    <span>
-                        {TextValues[10]}                     
-                    </span>
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[9]}                     
+                        </span>
+                        <span>
+                            {PercentValues[9]}
+                        </span>
+                    </div>
                     <div className="w-48">
                         
                     </div>
-                    <span>
-                        {TextValues[11]} 
-                    </span>
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[5]}                     
+                        </span>
+                        <span>
+                            {PercentValues[5]}
+                        </span>
+                    </div>
                 </div>
                 <div className="grid grid-flow-col gap-48">
-                    <span>
-                        {TextValues[5]} 
-                    </span>
-                    <span>
-                        {TextValues[6]} 
-                    </span>
-                    <span>
-                        {TextValues[7]} 
-                    </span>
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[8]}                     
+                        </span>
+                        <span>
+                            {PercentValues[8]}
+                        </span>
+                    </div>
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[7]}                     
+                        </span>
+                        <span>
+                            {PercentValues[7]}
+                        </span>
+                    </div>
+                    <div className="grid grid-flow-row place-items-center">
+                        <span className="text-xl font-bold">
+                            {TextValues[6]}                     
+                        </span>
+                        <span>
+                            {PercentValues[6]}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

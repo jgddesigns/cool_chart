@@ -6,7 +6,7 @@ By Jason Dunn (https://www.github.com/jgddesigns)
 
 Full Example:
 
-    <RadarChart Data={"house": .75, "car": .1, "plane": .3} Size="3" Color="green"/>
+    <RadarChart Data={"house": .75, "car": .1, "plane": .3} Title="Radar Chart" Size="3" Color="green"/>
 
 
 Props Detailed:
@@ -14,7 +14,7 @@ Props Detailed:
 
     Data (required)
 
-        A json object that specifies a type of data and its percentage value. Can be an already calculated percentage, a tuple containing values needed to calculate a perentage, or a mixture of both. The key value is used as a title for that portion of data on the chart. The length of this object will set the number of points in the chart (3-8 points)
+        A json object that specifies a type of data and its percentage value. Can be an already calculated percentage, a tuple containing values needed to calculate a perentage, or a mixture of both. The key value is used as a title for that portion of data on the chart. The length of this object will set the number of points in the chart (3-8 points).
 
         Examples:
 
@@ -23,6 +23,17 @@ Props Detailed:
             Data={"house": [3, 4], "car": [1, 10], "plane": [30, 100]}
 
             Data={"house": .75, "car": [1, 10], "plane": [30, 100]}
+
+
+    Title (optional)
+
+        A string holding the title of the chart
+
+        Defaults to "Radar Chart"
+
+        Examples:
+
+            Title="Radar Chart"
 
 
     Color (optional)
