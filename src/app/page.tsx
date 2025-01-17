@@ -95,7 +95,7 @@ export default function RadarChart (props: any ) {
                     }
                 }
                 else{
-                    if(props.Color[i] > 6){
+                    if(props.Color[i] > 9){
                         console.log("number " + props.Color[i] + " return false")
                         console.log("set to default gray")
                         return false
@@ -249,9 +249,13 @@ export default function RadarChart (props: any ) {
                       {props.Title ? props.Title : "Radar Chart"}
                   </div>
                   {/* <div className="mb-36 text-2xl italic" style={{ whiteSpace: "pre-line" }}> */}
-                  <div className={styles.subtitle} style={{ whiteSpace: "pre-line" }}>
-                      {props.Data ? Object.keys(props.Data).length + " Points of Data": "No Data Initialized. \n\nEnsure that a prop called 'Data' is passed and it contains a json object."}
-                  </div>
+                  {/* <div> */}
+                  {!props.Data ?
+                    <div className={styles.subtitle} style={{ whiteSpace: "pre-line" }}>
+                        {/* {props.Data ? Object.keys(props.Data).length + " Points of Data": "No Data Initialized. \n\nEnsure that a prop called 'Data' is passed and it contains a json object."} */}
+                        "No Data Initialized. \n\nEnsure that a prop called 'Data' is passed and it contains a json object." 
+                    </div>
+                  : null} 
                 </div>
                 {/* <div className="grid grid-flow-col gap-48"> */}
                 <div className={styles.row_container}>

@@ -20,11 +20,14 @@
 .header {
     display: grid;
     place-items: center;
+    margin-bottom: 4rem;
+    margin-top: 12rem;
 }
 
 .row_container{
     display: grid;
     grid-auto-flow: column;
+
 }
 
 .column_container{
