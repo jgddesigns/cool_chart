@@ -12,7 +12,7 @@ Getting Started:
         npm install ez-radar-chart
 
     Import Line
-        import RadarChart from ez-radar-chart
+        import RadarChart from 'ez-radar-chart'
 
 
 

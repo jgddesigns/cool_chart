@@ -1,27 +1,52 @@
+// {
+//   "compilerOptions": {
+//     "outDir": "./dist",
+//     "rootDir": "./src", 
+//     // "target": "ES2017",
+//     "lib": ["dom", "dom.iterable", "esnext"],
+//     "allowJs": true,
+//     "skipLibCheck": true,
+//     "strict": true,
+//     "noEmit": true,
+//     "esModuleInterop": true,
+//     "declaration": true,
+//     // "module": "esnext",
+//     "module": "commonjs", 
+//     "target": "es5",
+//     // "moduleResolution": "bundler",
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "jsx": "react-jsx",
+//     "incremental": true,
+//     "plugins": [
+//       {
+//         "name": "next"
+//       }
+//     ],
+//     "paths": {
+//       "@/*": ["./src/*"]
+//     }
+//   },
+//   // "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+//   "include": ["next-env.d.ts", "**/*.tsx", "src/**/*" ],
+//   "exclude": ["node_modules", "dist"]
+// }
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
+    "outDir": "./dist",          // Output directory
+    "rootDir": "./src",          // Input directory (src)
+    "module": "commonjs",        // Module system
+    "target": "es5",             // ECMAScript version
+    "jsx": "react-jsx",          // Use React JSX transform for React 17+
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "declaration": true,         // To generate .d.ts files (optional)
+    "strict": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*"                   // Include everything in the src folder
+  ],
+  "exclude": [
+    "node_modules",              // Exclude node_modules
+    "dist"                        // Exclude dist folder
+  ]
 }
