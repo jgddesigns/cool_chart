@@ -1,6 +1,9 @@
 EZ Radar Chart for React.js
 
-By Jason Dunn (https://www.github.com/jgddesigns)
+By Jason Dunn 
+
+Github: https://www.github.com/jgddesigns
+Contact: jaygeorgedunn@gmail.com
 
 A simple Radar Chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.
 
@@ -21,9 +24,9 @@ Getting Started:
 
 
 
-Full Example:
+Component Example:
 
-    <RadarChart Data={"house": .75, "car": .1, "plane": .3} Title="Radar Chart" Size="3" Color="green"/>
+    <RadarChart Data={"house": .75, "car": .1, "plane": .3} Title="My Radar Chart" Size="3" Color="green"/>
 
 
 Props Detailed:
@@ -48,9 +51,9 @@ Props Detailed:
 
         Defaults to "Radar Chart"
 
-        Examples:
+        Example:
 
-            Title="Radar Chart"
+            Title="My Radar Chart"
 
 
     Color (optional)
@@ -62,6 +65,7 @@ Props Detailed:
         Defaults to gray (#c2c2c2) if no value is passed
 
         Examples:
+
             Color="#000fff"
 
             Color="#a2d4cb"
@@ -75,7 +79,7 @@ Props Detailed:
 
         Ranges from small to extra large using number values 1-4
 
-        Defaults to 3 (large), 150px X 150px
+        Defaults to 3 (large), 300px X 300px
 
         Examples:
 
@@ -116,3 +120,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+

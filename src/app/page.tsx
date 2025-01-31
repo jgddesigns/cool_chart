@@ -13,9 +13,10 @@ export default function RadarChart (props: any ) {
     const [PointValue, setPointValue] = React.useState<any>(null)
     const [BackgroundColor, setBackgroundColor] = React.useState<any>("")
 
+
+
     const sizes = ["100px", "200px", "300px", "500px"]
 
-      
     const ending_points = [
         [0, 0],  
         [25, 0], 
@@ -39,7 +40,6 @@ export default function RadarChart (props: any ) {
         [12.5, 12.5]
     ]
 
-
     const points_array: any = {
         "3": [2, 10, 15],
         "4": [0, 4, 10, 15],
@@ -54,6 +54,7 @@ export default function RadarChart (props: any ) {
     const start_value = "polygon("
 
     const end_value = ")"
+
     
 
     useEffect(() => {
@@ -116,8 +117,7 @@ export default function RadarChart (props: any ) {
         for(let i=0; i<values.length; i++){
             temp_arr.push(ending_points[values[i]])
         }
-        // console.log("temp arr")
-        // console.log(temp_arr)
+
         setPointsOriginal(temp_arr)
         return temp_arr
     }
@@ -126,16 +126,12 @@ export default function RadarChart (props: any ) {
     function build_display(){
         let temp_arr = PointsAdjusted
         let temp_display: any = start_value
-        let temp_style = ""
 
         for(let i=0; i<temp_arr.length; i++){
             i != temp_arr.length - 1 ? temp_display = temp_display + temp_arr[i][0].toString() + "% " + temp_arr[i][1].toString() + "%, " : temp_display = temp_display + temp_arr[i][0].toString() + "% " + temp_arr[i][1].toString() + "%" 
         }
 
         temp_display = temp_display + end_value 
-
-        // console.log("temp display")
-        // console.log(temp_display)
 
         setDisplayedRadar(temp_display)
         setDisplayedStyle(get_dimensions())
@@ -163,12 +159,12 @@ export default function RadarChart (props: any ) {
 
 
     function get_value(place: any){
-
         let value = Math.round(get_percent(props.Data[Object.keys(props.Data)[place-1]]) * 100) + "%"
         console.log(value)
 
         return value
     }
+
 
     function set_text(){
         switch (PointValue){
@@ -240,28 +236,19 @@ export default function RadarChart (props: any ) {
 
     return(
         <div>
-            {/* <div className="w-full h-full grid grid-auto-rows grid-auto-cols place-items-center text-lg"> */}
             <div className={styles.container}>
-                {/* <div className="grid place-items-center"> */}
                 <div className={styles.header}>
-                  {/* <div className="mb-12 text-3xl"> */}
                   <div className={styles.title}>
                       {props.Title ? props.Title : "Radar Chart"}
                   </div>
-                  {/* <div className="mb-36 text-2xl italic" style={{ whiteSpace: "pre-line" }}> */}
-                  {/* <div> */}
                   {!props.Data ?
                     <div className={styles.subtitle} style={{ whiteSpace: "pre-line" }}>
-                        {/* {props.Data ? Object.keys(props.Data).length + " Points of Data": "No Data Initialized. \n\nEnsure that a prop called 'Data' is passed and it contains a json object."} */}
                         "No Data Initialized. \n\nEnsure that a prop called 'Data' is passed and it contains a json object." 
                     </div>
                   : null} 
                 </div>
-                {/* <div className="grid grid-flow-col gap-48"> */}
                 <div className={styles.row_container}>
-                    {/* <div className="grid grid-flow-row place-items-center"> */}
                     <div className={styles.column_container}>
-                        {/* <span className="text-xl font-bold"> */}
                         <span className={styles.attribute_text}>
                             {TextValues[0]}                     
                         </span>
@@ -307,7 +294,6 @@ export default function RadarChart (props: any ) {
                         </span>
                     </div>
                 </div>
-                {/* <div className="grid grid-flow-col place-items-center gap-96 mt-24 mb-24"> */}
                 <div className={styles.main_row}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
