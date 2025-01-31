@@ -1,6 +1,6 @@
 {
   "name": "ez-radar-chart",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": false,
   "main": "./dist/app/page.js",
   "scripts": {
