@@ -6,7 +6,7 @@ Github: https://www.github.com/jgddesigns
 
 Contact: jaygeorgedunn@gmail.com
 
-A simple Radar Chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.
+Radar Chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.
 
 
 ![003](https://github.com/user-attachments/assets/173665d3-1689-436b-913f-1abc3f4e50af)
