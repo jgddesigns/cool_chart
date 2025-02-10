@@ -1,6 +1,6 @@
 {
   "name": "ez-radar-chart",
-  "version": "0.6.1",
+  "version": "1.1.0",
   "private": false,
   "main": "./dist/app/page.js",
   "scripts": {
@@ -10,6 +10,18 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "description": "Radar Chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgddesigns/ez_radar_chart.git"
+  },
+  "keywords": [
+    "charts",
+    "radar",
+    "data"
+  ],
+  "author": "Jason Dunn",
+  "license": "MIT",
   "dependencies": {
     "next": "15.1.4",
     "react": "^19.0.0",
