@@ -9,8 +9,19 @@ Contact: jaygeorgedunn@gmail.com
 Radar Chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.
 
 
+
+
+<RadarChart Data={{"Grain": .2, "Dairy": .25, "Fruit": .15, "Vegetables": .1, "Meat": .3}} Title="Food Consumed" Size="3" Color="turquoise"/>
 ![003](https://github.com/user-attachments/assets/173665d3-1689-436b-913f-1abc3f4e50af)
+
+
+
+<RadarChart Data={{"Bass": .4, "Rainbow Trout": .2, "Brown Trout": .1, "Steelhead": .3}} Title="Fish Caught" Size="3" Color="red"/>
 ![002](https://github.com/user-attachments/assets/875aa8db-692d-4aff-9ba9-f6cc190c7a2d)
+
+
+
+<RadarChart Data={{"Melee": .7, "Mid Range": .5, "Long Range": 1, "Health": .4, "Marksmanship": [6, 10], "Repair": .6}} Title="Player Stats" Size="3" Color="#5bc6f0"/>
 ![001](https://github.com/user-attachments/assets/48875049-cedd-4e42-9be0-f66333a5690e)
 
 
@@ -27,7 +38,7 @@ Getting Started:
 
 Component Example:
 
-    <RadarChart Data={"house": .75, "car": .1, "plane": .3} Title="My Radar Chart" Size="3" Color="green"/>
+    <RadarChart Data={{"house": .75, "car": .1, "plane": .3}} Title="My Radar Chart" Size="3" Color="green"/>
 
 
 Props Detailed:
@@ -48,7 +59,7 @@ Props Detailed:
 
     Title (optional)
 
-        A string holding the title of the chart
+        A string holding the title of the chart.
 
         Defaults to "Radar Chart"
 
@@ -63,7 +74,7 @@ Props Detailed:
             or
         CSS Color: 'green'
 
-        Defaults to gray (#c2c2c2) if no value is passed
+        Defaults to gray (#c2c2c2) if no value is passed.
 
         Examples:
 
@@ -78,7 +89,7 @@ Props Detailed:
 
     Size (optional)
 
-        Ranges from small to extra large using number values 1-4
+        Ranges from small to extra large using number values 1-4.
 
         Defaults to 3 (large), 300px X 300px
 
