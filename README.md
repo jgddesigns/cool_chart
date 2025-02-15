@@ -1,10 +1,10 @@
 EZ Radar Chart for React.js
 
-By Jason Dunn 
+By JGD Designs
 
 Github: https://www.github.com/jgddesigns
 
-Contact: jaygeorgedunn@gmail.com
+Contact: jgd.email24@gmail.com
 
 Radar Chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.
 
