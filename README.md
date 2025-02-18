@@ -1,15 +1,15 @@
-EZ Radar Chart for React.js
+<h2>EZ Radar Chart for React.js</h2>
 
-By JGD Designs
+<font size="4">By JGD Designs</font>
 
 Github: https://www.github.com/jgddesigns
 
 Contact: jgd.email24@gmail.com
 
-Radar Chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.
+<i>Radar Chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.</i> <br><br>
 
 
-___________________________________________________________________________
+<h3>Examples:</h3>
 
 <RadarChart Data={{"Grain": .2, "Dairy": .25, "Fruit": .15, "Vegetables": .1, "Meat": .3}} Title="Food Consumed" Size="3" Color="turquoise"/>
 
@@ -27,7 +27,7 @@ ___________________________________________________________________________
 
 <RadarChart Data={{"Melee": .7, "Mid Range": .5, "Long Range": 1, "Health": .4, "Marksmanship": [6, 10], "Repair": .6}} Title="Player Stats" Size="3" Color="#5bc6f0"/>
 
-![001](https://github.com/user-attachments/assets/48875049-cedd-4e42-9be0-f66333a5690e)
+![001](https://github.com/user-attachments/assets/48875049-cedd-4e42-9be0-f66333a5690e)<br><br><br>
 
 
 
@@ -38,13 +38,13 @@ Getting Started:
 
     Import Line
         import RadarChart from 'ez-radar-chart'
-
+<br>
 
 
 Component Example:
 
     <RadarChart Data={{"house": .75, "car": .1, "plane": .3}} Title="My Radar Chart" Size="3" Color="green"/>
-
+<br>
 
 Props Detailed:
 
@@ -113,7 +113,7 @@ Props Detailed:
                 sets chart graphic size to 500px X 500px
 
 
-
+<br>
 
 
 MIT License
