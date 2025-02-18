@@ -9,7 +9,7 @@ Contact: jgd.email24@gmail.com
 <i>Radar Chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.</i> <br><br>
 
 
-<h3>Examples:</h3>
+<h3>Examples:</h3><br>
 
 <RadarChart Data={{"Grain": .2, "Dairy": .25, "Fruit": .15, "Vegetables": .1, "Meat": .3}} Title="Food Consumed" Size="3" Color="turquoise"/>
 
