@@ -1,4 +1,4 @@
-<h2>EZ Radar Chart for React.js</h2>
+<h2>Crazy Radar Chart for React.js</h2>
 
 <font size="4">By JGD Designs</font>
 
