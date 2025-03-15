@@ -36,6 +36,7 @@
     display: grid;
     grid-auto-flow: row;
     place-items: center;
+    padding: 4rem;
 }
 
 .attribute_text{
@@ -47,7 +48,7 @@
     display: grid;
     grid-auto-flow: column;
     place-items: center;
-    gap: 4rem;
+    gap: 12rem;
     margin-top: 4rem;
     margin-bottom: 4rem;
 }

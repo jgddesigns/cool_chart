@@ -169,24 +169,24 @@ export default function RadarChart (props: any ) {
     function set_text(){
         switch (PointValue){
             case 3:
-                setTextValues(["", get_text(1), "", "", "", "", get_text(2), "", get_text(3), "", "", ""])
-                setPercentValues(["", get_value(1), "", "", "", "", get_value(2), "", get_value(3), "", "", ""])
+                setTextValues(["", get_text(1), "", "", "", get_text(2), "", "", "", get_text(3), "", ""])
+                setPercentValues(["", get_value(1), "", "", "", get_value(2), "", "", "", get_value(3), "", ""])
                 break
             case 4:
-                setTextValues([get_text(1), "", get_text(2), "", "", "", get_text(3), "", get_text(4), "", "", ""])
-                setPercentValues([get_value(1), "", get_value(2), "", "", "", get_value(3), "", get_value(4), "", "", ""])
+                setTextValues(["", "", "", get_text(1), "", get_text(2), "", "", "", get_text(3), "", get_text(4)])
+                setPercentValues(["", "", "", get_value(1), "", get_value(2), "", "", "", get_value(3), "", get_text(4)])
                 break
             case 5:
                 setTextValues(["", get_text(1), "", "", get_text(2), "", get_text(3), "", get_text(4), "", get_text(5), ""])
                 setPercentValues(["", get_value(1), "", "", get_value(2), "", get_value(3), "", get_value(4), "", get_value(5), ""])
                 break
             case 6:
-                setTextValues([get_text(1), "", get_text(2), "", get_text(3), "", get_text(4), "", get_text(5), "", get_text(6), ""])
+                setTextValues([get_text(1), "", get_text(2), "", get_text(3),  "", get_text(4), "", get_text(5), "", get_text(6), ""])
                 setPercentValues([get_value(1), "", get_value(2), "", get_value(3), "", get_value(4), "", get_value(5), "", get_value(6), ""])
                 break
             case 7:
-                setTextValues([get_text(1), get_text(2), get_text(3), "", get_text(4), "",  get_text(5), "", get_text(6), "", get_text(7 ), ""])
-                setPercentValues([get_value(1), get_value(2), get_value(3), "", get_value(4), "",  get_value(5), "", get_value(6), "", get_value(7 ), ""])
+                setTextValues([get_text(1), get_text(2), get_text(3), "", get_text(4), "", get_text(5), "", get_text(6), "", get_text(7), ""])
+                setPercentValues([get_text(1), get_text(2), get_text(3), "", get_text(4), "", get_text(5), "", get_text(6), "", get_text(7), ""])
                 break
             case 8:
                 setTextValues([get_text(1), "", get_text(2), get_text(3), "", get_text(4), get_text(5), "", get_text(6), get_text(7), "", get_text(8)])
@@ -258,7 +258,7 @@ export default function RadarChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[1]}                     
+                            {TextValues[1]}                    
                         </span>
                         <span>
                             {PercentValues[1]}
@@ -366,5 +366,3 @@ export default function RadarChart (props: any ) {
         </div>
     )
 }
-
-
