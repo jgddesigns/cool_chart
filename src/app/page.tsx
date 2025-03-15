@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import {css_colors} from './etc/colors'
 import styles from './RadarChart.module.css'
 
-export default function RadarChart (props: any ) {
+export default function CoolChart (props: any ) {
     const [PointsOriginal, setPointsOriginal] = React.useState<any>(null)
     const [PointsAdjusted, setPointsAdjusted] = React.useState<any>(null)
     const [DisplayedRadar, setDisplayedRadar] = React.useState<any>({})
@@ -250,7 +250,7 @@ export default function RadarChart (props: any ) {
                 <div className={styles.row_container}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[0]}                     
+                            {TextValues[0]}0                     
                         </span>
                         <span>
                             {PercentValues[0]}
@@ -258,7 +258,7 @@ export default function RadarChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[1]}                    
+                            {TextValues[1]}1                    
                         </span>
                         <span>
                             {PercentValues[1]}
@@ -266,7 +266,7 @@ export default function RadarChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[2]}                     
+                            {TextValues[2]}2                     
                         </span>
                         <span>
                             {PercentValues[2]}
@@ -276,7 +276,7 @@ export default function RadarChart (props: any ) {
                 <div className={styles.secondary_row}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[11]}                     
+                            {TextValues[11]}11                     
                         </span>
                         <span>
                             {PercentValues[11]}
@@ -287,7 +287,7 @@ export default function RadarChart (props: any ) {
                     </div>              
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[3]}                     
+                            {TextValues[3]}3                     
                         </span>
                         <span>
                             {PercentValues[3]}
@@ -297,7 +297,7 @@ export default function RadarChart (props: any ) {
                 <div className={styles.main_row}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[10]}                     
+                            {TextValues[10]}10                     
                         </span>
                         <span>
                             {PercentValues[10]}
@@ -308,7 +308,7 @@ export default function RadarChart (props: any ) {
                     : null}
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[4]}                     
+                            {TextValues[4]}4                     
                         </span>
                         <span>
                             {PercentValues[4]}
@@ -318,7 +318,7 @@ export default function RadarChart (props: any ) {
                 <div className={styles.secondary_row}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[9]}                     
+                            {TextValues[9]}9                     
                         </span>
                         <span>
                             {PercentValues[9]}
@@ -329,7 +329,7 @@ export default function RadarChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[5]}                     
+                            {TextValues[5]}5                     
                         </span>
                         <span>
                             {PercentValues[5]}
@@ -339,7 +339,7 @@ export default function RadarChart (props: any ) {
                 <div className={styles.row_container}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[8]}                     
+                            {TextValues[8]}8                     
                         </span>
                         <span>
                             {PercentValues[8]}
@@ -347,7 +347,7 @@ export default function RadarChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[7]}                     
+                            {TextValues[7]}7                     
                         </span>
                         <span>
                             {PercentValues[7]}
@@ -355,7 +355,7 @@ export default function RadarChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[6]}                     
+                            {TextValues[6]}6                     
                         </span>
                         <span>
                             {PercentValues[6]}

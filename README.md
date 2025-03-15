@@ -1,4 +1,4 @@
-<h2>Crazy Radar Chart for React.js</h2>
+<h2>Cool Chart for React.js</h2>
 
 <font size="4">By JGD Designs</font>
 
@@ -6,26 +6,26 @@ Github: https://www.github.com/jgddesigns
 
 Contact: jgd.email24@gmail.com
 
-<i>Radar Chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.</i> <br><br><br>
+<i>A radar chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.</i> <br><br><br>
 
 
 <h3>Examples:</h3><br>
 
-<RadarChart Data={{"Grain": .2, "Dairy": .25, "Fruit": .15, "Vegetables": .1, "Meat": .3}} Title="Food Consumed" Size="3" Color="turquoise"/>
+<CoolChart Data={{"Grain": .2, "Dairy": .25, "Fruit": .15, "Vegetables": .1, "Meat": .3}} Title="Food Consumed" Size="3" Color="turquoise"/>
 
 ![003](https://github.com/user-attachments/assets/173665d3-1689-436b-913f-1abc3f4e50af)
 
 
 ___________________________________________________________________________
 
-<RadarChart Data={{"Bass": .4, "Rainbow Trout": .2, "Brown Trout": .1, "Steelhead": .3}} Title="Fish Caught" Size="3" Color="red"/>
+<CoolChart Data={{"Bass": .4, "Rainbow Trout": .2, "Brown Trout": .1, "Steelhead": .3}} Title="Fish Caught" Size="3" Color="red"/>
 
 ![002](https://github.com/user-attachments/assets/875aa8db-692d-4aff-9ba9-f6cc190c7a2d)
 
 
 ___________________________________________________________________________
 
-<RadarChart Data={{"Melee": .7, "Mid Range": .5, "Long Range": 1, "Health": .4, "Marksmanship": [6, 10], "Repair": .6}} Title="Player Stats" Size="3" Color="#5bc6f0"/>
+<CoolChart Data={{"Melee": .7, "Mid Range": .5, "Long Range": 1, "Health": .4, "Marksmanship": [6, 10], "Repair": .6}} Title="Player Stats" Size="3" Color="#5bc6f0"/>
 
 ![001](https://github.com/user-attachments/assets/48875049-cedd-4e42-9be0-f66333a5690e)<br><br><br>
 
@@ -34,16 +34,16 @@ ___________________________________________________________________________
 Getting Started:
 
     From Terminal 
-        npm install ez-radar-chart
+        npm install cool-chart
 
     Import Line
-        import RadarChart from 'ez-radar-chart'
+        import CoolChart from 'cool-chart'
 <br>
 
 
 Component Example:
 
-    <RadarChart Data={{"house": .75, "car": .1, "plane": .3}} Title="My Radar Chart" Size="3" Color="green"/>
+    <CoolChart Data={{"house": .75, "car": .1, "plane": .3}} Title="My Radar Chart" Size="3" Color="green"/>
 <br>
 
 Props Detailed:
