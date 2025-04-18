@@ -14,7 +14,6 @@ export default function CoolChart (props: any ) {
     const [BackgroundColor, setBackgroundColor] = React.useState<any>("")
 
 
-
     const sizes = ["100px", "200px", "300px", "500px"]
 
     const ending_points = [
@@ -78,35 +77,25 @@ export default function CoolChart (props: any ) {
     }, [PointsAdjusted])
 
 
-
     function is_color(){
         if(css_colors.includes(props.Color)){
-            console.log("color check confirmed (base color)")
             return true
         }
         if(props.Color && props.Color[0] === "#" && (props.Color.length > 3 && props.Color.length < 8)){
             for(let i=1; i<props.Color.length; i++){
-                console.log(i)
-                console.log(props.Color[i])
                 if(isNaN(props.Color[i])){
                     if(!hex_letters.includes(props.Color[i].toLowerCase())){
-                        console.log("letter " + props.Color[i] + " return false")
-                        console.log("set to default gray")
                         return false
                     }
                 }
                 else{
                     if(props.Color[i] > 9){
-                        console.log("number " + props.Color[i] + " return false")
-                        console.log("set to default gray")
                         return false
                     }
                 }
             }
-            console.log("color check confirmed (hex color)")
             return true
         }
-        console.log("no valid color, defaulting to gray")
         return false
     }
 
@@ -142,7 +131,7 @@ export default function CoolChart (props: any ) {
         if(!isNaN(props.Size) && props.Size < 5){
             return sizes[props.Size - 1]
         }
-        console.log("no valid size, defaulting to 200px X 200px")
+
         return sizes[2]
     }
 
@@ -160,7 +149,6 @@ export default function CoolChart (props: any ) {
 
     function get_value(place: any){
         let value = Math.round(get_percent(props.Data[Object.keys(props.Data)[place-1]]) * 100) + "%"
-        console.log(value)
 
         return value
     }
@@ -174,7 +162,7 @@ export default function CoolChart (props: any ) {
                 break
             case 4:
                 setTextValues(["", "", "", get_text(1), "", get_text(2), "", "", "", get_text(3), "", get_text(4)])
-                setPercentValues(["", "", "", get_value(1), "", get_value(2), "", "", "", get_value(3), "", get_text(4)])
+                setPercentValues(["", "", "", get_value(1), "", get_value(2), "", "", "", get_value(3), "", get_value(4)])
                 break
             case 5:
                 setTextValues(["", get_text(1), "", "", get_text(2), "", get_text(3), "", get_text(4), "", get_text(5), ""])
@@ -186,7 +174,7 @@ export default function CoolChart (props: any ) {
                 break
             case 7:
                 setTextValues([get_text(1), get_text(2), get_text(3), "", get_text(4), "", get_text(5), "", get_text(6), "", get_text(7), ""])
-                setPercentValues([get_text(1), get_text(2), get_text(3), "", get_text(4), "", get_text(5), "", get_text(6), "", get_text(7), ""])
+                setPercentValues([get_value(1), get_value(2), get_value(3), "", get_value(4), "", get_value(5), "", get_value(6), "", get_value(7), ""])
                 break
             case 8:
                 setTextValues([get_text(1), "", get_text(2), get_text(3), "", get_text(4), get_text(5), "", get_text(6), get_text(7), "", get_text(8)])
@@ -198,7 +186,7 @@ export default function CoolChart (props: any ) {
 
     function adjust_points(values: any){
         let temp_arr: any = PointsOriginal
-        console.log(temp_arr)
+
         for(let i = 0; i < temp_arr.length; i++){
             temp_arr[i][0] > 1 && temp_arr[i][0] < 50 ? temp_arr[i][0] = temp_arr[i][0] * Math.abs(1+(1-get_percent(values[Object.keys(values)[i]]))) : null
 
@@ -221,15 +209,9 @@ export default function CoolChart (props: any ) {
 
 
     function get_percent(values: any){
-        console.log("values")
-        console.log(values)
         if(!isNaN(values[0])){
-            console.log("getting value percentage")
-            console.log(values[0]/values[1])
             return values[0]/values[1]
         }
-        console.log("value percentage already calculated")
-        console.log(values)
         return values
     }
 
@@ -250,7 +232,7 @@ export default function CoolChart (props: any ) {
                 <div className={styles.row_container}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[0]}0                     
+                            {TextValues[0]}                     
                         </span>
                         <span>
                             {PercentValues[0]}
@@ -258,7 +240,7 @@ export default function CoolChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[1]}1                    
+                            {TextValues[1]}                    
                         </span>
                         <span>
                             {PercentValues[1]}
@@ -266,7 +248,7 @@ export default function CoolChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[2]}2                     
+                            {TextValues[2]}                     
                         </span>
                         <span>
                             {PercentValues[2]}
@@ -276,7 +258,7 @@ export default function CoolChart (props: any ) {
                 <div className={styles.secondary_row}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[11]}11                     
+                            {TextValues[11]}                     
                         </span>
                         <span>
                             {PercentValues[11]}
@@ -287,7 +269,7 @@ export default function CoolChart (props: any ) {
                     </div>              
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[3]}3                     
+                            {TextValues[3]}                     
                         </span>
                         <span>
                             {PercentValues[3]}
@@ -297,7 +279,7 @@ export default function CoolChart (props: any ) {
                 <div className={styles.main_row}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[10]}10                     
+                            {TextValues[10]}                     
                         </span>
                         <span>
                             {PercentValues[10]}
@@ -308,7 +290,7 @@ export default function CoolChart (props: any ) {
                     : null}
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[4]}4                     
+                            {TextValues[4]}                     
                         </span>
                         <span>
                             {PercentValues[4]}
@@ -318,7 +300,7 @@ export default function CoolChart (props: any ) {
                 <div className={styles.secondary_row}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[9]}9                     
+                            {TextValues[9]}                     
                         </span>
                         <span>
                             {PercentValues[9]}
@@ -329,7 +311,7 @@ export default function CoolChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[5]}5                     
+                            {TextValues[5]}                     
                         </span>
                         <span>
                             {PercentValues[5]}
@@ -339,7 +321,7 @@ export default function CoolChart (props: any ) {
                 <div className={styles.row_container}>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[8]}8                     
+                            {TextValues[8]}                     
                         </span>
                         <span>
                             {PercentValues[8]}
@@ -347,7 +329,7 @@ export default function CoolChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[7]}7                     
+                            {TextValues[7]}                     
                         </span>
                         <span>
                             {PercentValues[7]}
@@ -355,7 +337,7 @@ export default function CoolChart (props: any ) {
                     </div>
                     <div className={styles.column_container}>
                         <span className={styles.attribute_text}>
-                            {TextValues[6]}6                     
+                            {TextValues[6]}                     
                         </span>
                         <span>
                             {PercentValues[6]}
