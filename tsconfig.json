@@ -33,20 +33,39 @@
 // }
 {
   "compilerOptions": {
-    "outDir": "./dist",          // Output directory
-    "rootDir": "./src",          // Input directory (src)
-    "module": "commonjs",        // Module system
-    "target": "es5",             // ECMAScript version
-    "jsx": "react-jsx",          // Use React JSX transform for React 17+
+    "outDir": "./dist", // Output directory
+    "rootDir": "./src", // Input directory (src)
+    "module": "commonjs", // Module system
+    "target": "es5", // ECMAScript version
+    "jsx": "preserve", // Use React JSX transform for React 17+
     "esModuleInterop": true,
-    "declaration": true,         // To generate .d.ts files (optional)
-    "strict": true
+    "declaration": true, // To generate .d.ts files (optional)
+    "strict": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "incremental": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
-    "src/**/*"                   // Include everything in the src folder
+    "src/**/*" // Include everything in the src folder
+    ,
+    ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",              // Exclude node_modules
-    "dist"                        // Exclude dist folder
+    "node_modules", // Exclude node_modules
+    "dist" // Exclude dist folder
   ]
 }

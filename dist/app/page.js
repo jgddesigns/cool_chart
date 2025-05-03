@@ -100,32 +100,25 @@ function RadarChart(props) {
     }, [PointsAdjusted]);
     function is_color() {
         if (colors_1.css_colors.includes(props.Color)) {
-            console.log("color check confirmed (base color)");
             return true;
         }
         if (props.Color && props.Color[0] === "#" && (props.Color.length > 3 && props.Color.length < 8)) {
             for (var i = 1; i < props.Color.length; i++) {
-                console.log(i);
-                console.log(props.Color[i]);
                 if (isNaN(props.Color[i])) {
                     if (!hex_letters.includes(props.Color[i].toLowerCase())) {
-                        console.log("letter " + props.Color[i] + " return false");
-                        console.log("set to default gray");
                         return false;
                     }
                 }
                 else {
                     if (props.Color[i] > 9) {
-                        console.log("number " + props.Color[i] + " return false");
-                        console.log("set to default gray");
                         return false;
                     }
                 }
             }
-            console.log("color check confirmed (hex color)");
+
             return true;
         }
-        console.log("no valid color, defaulting to gray");
+
         return false;
     }
     function build_values(values) {
@@ -133,8 +126,7 @@ function RadarChart(props) {
         for (var i = 0; i < values.length; i++) {
             temp_arr.push(ending_points[values[i]]);
         }
-        // console.log("temp arr")
-        // console.log(temp_arr)
+
         setPointsOriginal(temp_arr);
         return temp_arr;
     }
@@ -146,8 +138,6 @@ function RadarChart(props) {
             i != temp_arr.length - 1 ? temp_display = temp_display + temp_arr[i][0].toString() + "% " + temp_arr[i][1].toString() + "%, " : temp_display = temp_display + temp_arr[i][0].toString() + "% " + temp_arr[i][1].toString() + "%";
         }
         temp_display = temp_display + end_value;
-        // console.log("temp display")
-        // console.log(temp_display)
         setDisplayedRadar(temp_display);
         setDisplayedStyle(get_dimensions());
     }
@@ -155,7 +145,6 @@ function RadarChart(props) {
         if (!isNaN(props.Size) && props.Size < 5) {
             return sizes[props.Size - 1];
         }
-        console.log("no valid size, defaulting to 200px X 200px");
         return sizes[2];
     }
     function calculate_points(points) {
@@ -167,7 +156,6 @@ function RadarChart(props) {
     }
     function get_value(place) {
         var value = Math.round(get_percent(props.Data[Object.keys(props.Data)[place - 1]]) * 100) + "%";
-        console.log(value);
         return value;
     }
     function set_text() {
@@ -200,7 +188,7 @@ function RadarChart(props) {
     }
     function adjust_points(values) {
         var temp_arr = PointsOriginal;
-        console.log(temp_arr);
+
         for (var i = 0; i < temp_arr.length; i++) {
             temp_arr[i][0] > 1 && temp_arr[i][0] < 50 ? temp_arr[i][0] = temp_arr[i][0] * Math.abs(1 + (1 - get_percent(values[Object.keys(values)[i]]))) : null;
             temp_arr[i][0] > 50 && temp_arr[i][0] < 100 ? temp_arr[i][0] = 50 + (Math.abs(temp_arr[i][0] - 50) * get_percent(values[Object.keys(values)[i]])) : null;
@@ -213,16 +201,12 @@ function RadarChart(props) {
         setPointsAdjusted(temp_arr);
     }
     function get_percent(values) {
-        console.log("values");
-        console.log(values);
+
         if (!isNaN(values[0])) {
-            console.log("getting value percentage");
-            console.log(values[0] / values[1]);
             return values[0] / values[1];
         }
-        console.log("value percentage already calculated");
-        console.log(values);
-        return values;
+
+        return values
     }
     return ((0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsxs)("div", { className: RadarChart_module_css_1.default.container, children: [(0, jsx_runtime_1.jsxs)("div", { className: RadarChart_module_css_1.default.header, children: [(0, jsx_runtime_1.jsx)("div", { className: RadarChart_module_css_1.default.title, children: props.Title ? props.Title : "Radar Chart" }), !props.Data ?
                             (0, jsx_runtime_1.jsx)("div", { className: RadarChart_module_css_1.default.subtitle, style: { whiteSpace: "pre-line" }, children: "\"No Data Initialized. \\n\\nEnsure that a prop called 'Data' is passed and it contains a json object.\"" })

@@ -14,7 +14,7 @@ export default function CoolChart (props: any ) {
     const [BackgroundColor, setBackgroundColor] = React.useState<any>("")
 
 
-    const sizes = ["100px", "200px", "300px", "500px"]
+    const sizes = ["40px", "100px", "200px", "300px", "500px"]
 
     const ending_points = [
         [0, 0],  
@@ -129,7 +129,7 @@ export default function CoolChart (props: any ) {
 
     function get_dimensions(){
         if(!isNaN(props.Size) && props.Size < 5){
-            return sizes[props.Size - 1]
+            return sizes[props.Size]
         }
 
         return sizes[2]
