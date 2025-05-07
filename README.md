@@ -4,9 +4,15 @@
 
 Github: https://www.github.com/jgddesigns
 
-Contact: jgd.email24@gmail.com
+Contact: jaygeorgedunn@gmail.com
 
 <i>A radar chart component for use with React.js and Next.js. Customize size, color and points of data. Works for 3 to 8 attributes.</i> <br><br><br>
+
+DEMO (desktop version) : https://coolchartdeploy.vercel.app/
+
+NPM Package : https://www.npmjs.com/package/cool-chart
+
+<br><br><br>
 
 
 <h3>Examples:</h3><br>
